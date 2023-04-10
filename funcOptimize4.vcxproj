@@ -139,17 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Desktop\BigProjectFuncOptimize\Area.cpp" />
-    <ClCompile Include="..\..\..\..\Desktop\BigProjectFuncOptimize\Function.cpp" />
-    <ClCompile Include="..\..\..\..\Desktop\BigProjectFuncOptimize\OptMethod.cpp" />
-    <ClCompile Include="..\..\..\..\Desktop\BigProjectFuncOptimize\StopCrit.cpp" />
+    <ClCompile Include="Area.cpp" />
     <ClCompile Include="funcOptimize4.cpp" />
+    <ClCompile Include="Function.cpp" />
+    <ClCompile Include="OptMethod.cpp" />
+    <ClCompile Include="StopCrit.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Desktop\BigProjectFuncOptimize\Area.h" />
-    <ClInclude Include="..\..\..\..\Desktop\BigProjectFuncOptimize\Function.h" />
-    <ClInclude Include="..\..\..\..\Desktop\BigProjectFuncOptimize\OptMethod.h" />
-    <ClInclude Include="..\..\..\..\Desktop\BigProjectFuncOptimize\StopCrit.h" />
+    <ClInclude Include="Area.h" />
+    <ClInclude Include="Function.h" />
+    <ClInclude Include="OptMethod.h" />
+    <ClInclude Include="StopCrit.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -21,11 +21,13 @@ public:
 };
 
 class Area3d : public Area {
-    std::vector<double> area = {-5, 5, -5, 5, -5, 5};
+public:
+    explicit Area3d(double x1 = -5, double x2 = 5, double x3 = -5, double x4 = 5, double x5 = -5, double x6 = 5);
 };
 
 class Area4d : public Area {
-    std::vector<double> area = {-5, 5, -5, 5, -5, 5, -5, 5};
+public:
+    explicit Area4d(double x1 = -5, double x2 = 5, double x3 = -5, double x4 = 5, double x5 = -5, double x6 = 5, double x7 = -5, double x8 = 5);
 };
 
 #endif //BIGPROJECTFUNCOPTIMIZE_AREA_H

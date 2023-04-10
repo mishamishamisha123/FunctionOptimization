@@ -26,9 +26,8 @@ class Newton : public OptMethod {
 public:
     Newton();
     double optimize(Function *f, StopCrit *sc, Area *a, std::vector<double> start) override;
-    double det(std::vector<std::vector<double>> a);
     std::vector<double> nextPoint(std::vector<double> a, Function *f);
+    std::vector<std::vector<double>> inverse_matrix(std::vector<std::vector<double>> matrix);
 };
-
 
 #endif //BIGPROJECTFUNCOPTIMIZE_OPTMETHOD_H

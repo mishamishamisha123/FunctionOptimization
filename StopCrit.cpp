@@ -6,12 +6,6 @@
 #include "StopCrit.h"
 #include <cmath>
 
-bool StopCritN::stop(int n, std::vector<double> x1, std::vector<double> x2, double fx1, double fx2, double grad) {
-    return this->getN() < n;
-}
-
-StopCritN::StopCritN(int n) : StopCrit(n, 0, 'n') {}
-
 int StopCrit::getN() const {
     return n;
 }
@@ -22,11 +16,40 @@ double StopCrit::getEps() const {
     return eps;
 }
 
-StopCritGrad::StopCritGrad(int n, double eps, char t) : StopCrit(0, eps, 'g') {}
-
-bool StopCritGrad::stop(int n, std::vector<double> x1, std::vector<double> x2, double fx1, double fx2, double grad) {
-    double sum = 0;
-    for (int i = 0; i < std::min(x1.size(), x2.size()); ++i)
-        sum += pow(x1[i] - x2[i], 2);
-    return sum > pow(grad, 2);
+bool StopCritN::stop(int n, std::vector<double> x1, std::vector<double> x2, double fx1, double fx2, double grad, int last_improve) {
+    return this->getN() < n;
 }
+
+StopCritN::StopCritN(int n) : StopCrit(n, 0, 'n') {}
+
+StopCritGrad::StopCritGrad(double eps) : StopCrit(0, eps, 'g') {}
+
+bool StopCritGrad::stop(int n, std::vector<double> x1, std::vector<double> x2, double fx1, double fx2, double grad, int last_improve) {
+    return abs(grad) < getEps();
+}
+
+StopCritDelta::StopCritDelta(double eps) : StopCrit(0, eps, 'd') {}
+
+bool StopCritDelta::stop(int n, std::vector<double> x1, std::vector<double> x2, double fx1, double fx2, double grad, int last_improve)
+{
+    double sum = 0;
+    for (int i = 0; i < std::min(x1.size(), x2.size()); ++i) {
+        sum += pow(x1[i] - x2[i], 2);
+    }
+    return sum < pow(getEps(), 2);
+}
+
+StopCritGrow::StopCritGrow(double eps) : StopCrit(0, eps, 'G') {}
+
+bool StopCritGrow::stop(int n, std::vector<double> x1, std::vector<double> x2, double fx1, double fx2, double grad, int last_improve)
+{
+    return (fx2-fx1)/fx2 < pow(getEps(), 2);
+}
+
+StopCritLastImprove::StopCritLastImprove(int n) : StopCrit(n, 0, 'l') {}
+
+bool StopCritLastImprove::stop(int n, std::vector<double> x1, std::vector<double> x2, double fx1, double fx2, double grad, int last_improve)
+{
+    return this->getN() < last_improve;
+}
+
